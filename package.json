@@ -1,12 +1,29 @@
 {
-  "name": "web_2",
+  "name": "web_test_2",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/datnguyentrung/web_2.git"
+  },
+  "author": "dat",
   "license": "ISC",
-  "description": ""
+  "bugs": {
+    "url": "https://github.com/datnguyentrung/web_2/issues"
+  },
+  "homepage": "https://github.com/datnguyentrung/web_2#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "16.4.7",
+    "ejs": "3.1.10",
+    "express": "4.21.2",
+    "mysql2": "3.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "3.1.9"
+  }
 }

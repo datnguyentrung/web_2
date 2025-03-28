@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAEKWONDO GOAT</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="/home">Home</a>
+        <a class="active" href="/course">Khóa Học</a>
+        <a href="/training">Lộ Trình Đào Tạo</a>
+        <a href="/coach">Huấn Luyện Viên</a>
+    </div>
+    <div class="table-container">
+        <div class="title">DANH SÁCH KHÓA HỌC</div>
+        <button><a href="/course/create-course">Thêm Khóa Học</a></button>
+        <table>
+            <tr>
+                <th>Mã Khóa Học</th>
+                <th>Loại</th>
+                <th>Mô Hình</th>
+                <th>Thời Gian (tháng)</th>
+                <th>Cơ Sở</th>
+                <th>Số Tiền</th>
+                <th></th>
+            </tr>
+            <% listCourses.forEach(function(user) { %>
+                <tr>
+                    <td>
+                        <%= user.id %>
+                    </td>
+                    <td>
+                        <%= user.khoahoc %>
+                    </td>
+                    <td>
+                        <%= user.mohinh %>
+                    </td>
+                    <td>
+                        <%= user.thoigian %>
+                    </td>
+                    <td>
+                        <%= user.coso %>
+                    </td>
+                    <td>
+                        <%= user.sotien %>
+                    </td>
+                    <td>
+                        <form action="/course/edit-course/<%= user.id %>" method="GET">
+                            <button type="submit">Edit</button>
+                        </form>
+                        <form action="/course/delete-course/<%= user.id %>" method="POST">
+                            <button>Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+    </div>
+</body>
+
+</html>

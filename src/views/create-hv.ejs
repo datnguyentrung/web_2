@@ -1,0 +1,59 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAEKWONDO GOAT</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="/home">Home</a>
+        <a href="/course">Khóa Học</a>
+        <a href="/training">Lộ Trình Đào Tạo</a>
+        <a href="/coach">Huấn Luyện Viên</a>
+    </div>
+    <div class="form-add-new">
+        <form action="/home/add-hv" method="POST">
+            <fieldset>
+                <legend>Them Hoc Vien</legend>
+                <div>
+                    <div class="input-group">
+                        <label>Name:</label>
+                        <input type="text" name="myname" required />
+                    </div>
+
+                    <div class="input-group">
+                        <label>Co So:</label>
+                        <select name="cs" required>
+                            <option value="1">CS 1</option>
+                            <option value="2">CS 2</option>
+                            <option value="3">CS 3</option>
+                            <option value="4">CS 4</option>
+                            <option value="5">CS 5</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Cap Dai:</label>
+                        <input type="text" name="capdai" required />
+                    </div>
+
+                    <div class="input-group">
+                        <label>Chuc Vu:</label>
+                        <input type="text" name="chucvu" required />
+                    </div>
+
+                    <div class="input-group">
+                        <label>Phone:</label>
+                        <input type="text" name="phone" required />
+                    </div>
+                    <button>Save</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>

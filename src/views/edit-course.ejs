@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAEKWONDO GOAT</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="/home">Home</a>
+        <a href="/course">Khóa Học</a>
+        <a href="/training">Lộ Trình Đào Tạo</a>
+        <a href="/coach">Huấn Luyện Viên</a>
+    </div>
+    <div class="form-add-new">
+        <form action="/course/update-course" method="POST">
+            <fieldset>
+                <legend>Chỉnh Sửa Khóa Học</legend>
+                <div>
+                    <div class="input-group d-none">
+                        <label>Id</label>
+                        <input type="text" name="id" value="<%= courseEdit.id%>" required />
+                    </div>
+                    <div class="input-group">
+                        <label>Khóa Học:</label>
+                        <input type="text" name="khoahoc" value="<%= courseEdit.khoahoc%>" required />
+                    </div>
+
+                    <div class="input-group">
+                        <label>Mô Hình:</label>
+                        <input type="text" name="mohinh" value="<%= courseEdit.mohinh%>" required />
+                    </div>
+
+                    <div class="input-group">
+                        <label>Thời Gian:</label>
+                        <input type="text" name="thoigian" value="<%= courseEdit.thoigian%>" required />
+                    </div>
+
+                    <div class="input-group">
+                        <label>Cơ Sở:</label>
+                        <input type="text" name="coso" value="<%= courseEdit.coso%>" required />
+                    </div>
+
+                    <div class="input-group">
+                        <label>Học Phí:</label>
+                        <input type="text" name="sotien" value="<%= courseEdit.sotien%>" required />
+                    </div>
+                    <button>Save</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAEKWONDO GOAT</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<script>
+    function filterTable(columnIndex) {
+        let input = event.target.value.toLowerCase();
+        let table = document.getElementById("studentTable");
+        let rows = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < rows.length; i++) { // Bỏ qua dòng đầu tiên (tiêu đề)
+            let cell = rows[i].getElementsByTagName("td")[columnIndex];
+            if (cell) {
+                let textValue = cell.textContent || cell.innerText;
+                rows[i].style.display = textValue.toLowerCase().includes(input) ? "" : "none";
+            }
+        }
+    }
+</script>
+
+
+<body>
+    <div class="topnav">
+        <a class="active" href="/home">Home</a>
+        <a href="/course">Khóa Học</a>
+        <a href="/training">Lộ Trình Đào Tạo</a>
+        <a href="/coach">Huấn Luyện Viên</a>
+    </div>
+    <div class="table-container">
+        <div class="title">Danh Sach Hoc Vien</div>
+        <button><a href="/home/create">Them Hoc Vien</a></button>
+        <table id="studentTable">
+            <tr>
+                <th>ID <input type="text" onkeyup="filterTable(0)" placeholder="Lọc ID"></th>
+                <th>Name <input type="text" onkeyup="filterTable(1)" placeholder="Lọc Tên"></th>
+                <th>CS <input type="text" onkeyup="filterTable(2)" placeholder="Lọc CS"></th>
+                <th>Cap Dai <input type="text" onkeyup="filterTable(3)" placeholder="Lọc Cấp Đai"></th>
+                <th>Chuc Vu <input type="text" onkeyup="filterTable(4)" placeholder="Lọc Chức Vụ"></th>
+                <th>Phone <input type="text" onkeyup="filterTable(5)" placeholder="Lọc SĐT"></th>
+            </tr>
+            <% listUsers.forEach(function(user) { %>
+                <tr>
+                    <td>
+                        <%= user.id %>
+                    </td>
+                    <td>
+                        <%= user.name %>
+                    </td>
+                    <td>
+                        <%= user.cs %>
+                    </td>
+                    <td>
+                        <%= user.capdai %>
+                    </td>
+                    <td>
+                        <%= user.chucvu %>
+                    </td>
+                    <td>
+                        <%= user.phone %>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+    </div>
+</body>
+
+</html>
