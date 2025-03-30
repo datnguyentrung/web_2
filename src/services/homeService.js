@@ -31,7 +31,7 @@ const getAllUsers = async (trangthai, cs, dai,
     if (conditions.length > 0) {
         sql += ` WHERE ` + conditions.join(" AND ");
     }
-    console.log(sql);
+
     let [results, fields] = await connection.query(sql, values);
     return results;
 };

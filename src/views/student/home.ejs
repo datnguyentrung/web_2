@@ -80,6 +80,7 @@
                 <th>Member</th>
                 <th>Mã Hội Viên</th>
                 <th>Phone</th>
+                <th>Action</th>
             </tr>
             <% listUsers.forEach(function(user) { %>
                 <tr>
@@ -121,6 +122,14 @@
                     </td>
                     <td>
                         <%= user.phone %>
+                    </td>
+                    <td>
+                        <form action="/student/edit-student/<%= user.id %>" method="GET">
+                            <button type="submit">Edit</button>
+                        </form>
+                        <form action="/student/delete-student/<%= user.id %>" method="POST">
+                            <button>Delete</button>
+                        </form>
                     </td>
                 </tr>
                 <% }) %>

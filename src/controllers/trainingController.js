@@ -4,7 +4,7 @@ const {
 } = require("../services/trainingService");
 
 const getTrainingPage = async (req, res) => {
-    res.render('training.ejs')
+    res.render('./training/training.ejs')
 }
 
 module.exports = {

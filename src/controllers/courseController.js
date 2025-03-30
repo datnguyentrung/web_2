@@ -5,7 +5,7 @@ const {
 
 const getCourses = async (req, res) => {
     let results = await getAllCourses();
-    res.render('course.ejs', { listCourses: results })
+    res.render('./course/course.ejs', { listCourses: results })
 }
 
 const postAddCourse = async (req, res) => {
@@ -16,14 +16,14 @@ const postAddCourse = async (req, res) => {
 }
 
 const getCreateCourse = (req, res) => {
-    res.render('create-course.ejs')
+    res.render('./course/create-course.ejs')
 }
 
 const getUpdateCourse = async (req, res) => {
     const courseId = req.params.id;
 
     let course = await getCourseById(courseId);
-    res.render('edit-course.ejs', { courseEdit: course }) // x <- y
+    res.render('./course/edit-course.ejs', { courseEdit: course }) // x <- y
 }
 
 const postUpdateCourse = async (req, res) => {

@@ -27,7 +27,7 @@ const getHomePage = async (req, res) => {
     let unq_chucvu = await getUniqueValues("chucvu");
     let unq_phone = await getUniqueValues("phone");
 
-    res.render('home.ejs', {
+    res.render('./student/home.ejs', {
         listUsers: results,
         filterUsers: {
             unq_cs, unq_dai, unq_chucvu,
@@ -39,7 +39,7 @@ const getHomePage = async (req, res) => {
 
 
 const postCreatePage = (req, res) => {
-    res.render('create-hv.ejs')
+    res.render('./student/create-hv.ejs')
 }
 
 const postAddHocVien = async (req, res) => {
