@@ -4,24 +4,34 @@ const {
 } = require("../services/homeService");
 
 const getHomePage = async (req, res) => {
-    let { filter_cs, filter_capdai, filter_chucvu } = req.query; // Đọc từ query string
+    let {
+        filter_trangthai, filter_cs, filter_dai,
+        filter_chucvu, filter_phone
+    } = req.query; // Đọc từ query string
 
+    filter_trangthai = filter_trangthai || "Chọn tất cả";
     filter_cs = filter_cs || "Chọn tất cả";
-    filter_capdai = filter_capdai || "Chọn tất cả";
+    filter_dai = filter_dai || "Chọn tất cả";
     filter_chucvu = filter_chucvu || "Chọn tất cả";
+    filter_phone = filter_phone || "Chọn tất cả";
     // Lấy danh sách học viên theo bộ lọc (hoặc toàn bộ nếu không)
-    let results = await getAllUsers(filter_cs, filter_capdai, filter_chucvu);
+    let results = await getAllUsers(
+        filter_trangthai, filter_cs, filter_dai,
+        filter_chucvu, filter_phone
+    );
 
     // Lấy danh sách các giá trị duy nhất
+    let unq_trangthai = await getUniqueValues("trangthai")
     let unq_cs = await getUniqueValues("cs");
-    let unq_capdai = await getUniqueValues("capdai");
+    let unq_dai = await getUniqueValues("dai");
     let unq_chucvu = await getUniqueValues("chucvu");
     let unq_phone = await getUniqueValues("phone");
 
     res.render('home.ejs', {
         listUsers: results,
         filterUsers: {
-            unq_cs, unq_capdai, unq_chucvu, unq_phone
+            unq_cs, unq_dai, unq_chucvu,
+            unq_phone, unq_trangthai
         }
     });
 };
@@ -33,26 +43,13 @@ const postCreatePage = (req, res) => {
 }
 
 const postAddHocVien = async (req, res) => {
-    let { myname, cs, capdai, chucvu, phone } = req.body;
+    let { myname, cs, dai, chucvu, phone } = req.body;
     let [results, fields] = await connection.query(
-        `INSERT INTO DSHV (name, cs, capdai, chucvu, phone) VALUES (?, ?, ?, ?, ?)`,
-        [myname, cs, capdai, chucvu, phone]
+        `INSERT INTO dshv (name, cs, dai, chucvu, phone) VALUES (?, ?, ?, ?, ?)`,
+        [myname, cs, dai, chucvu, phone]
     );
-    res.redirect('/home');
+    res.redirect('/');
 }
-
-// const getDropDownData = async (req, res) => {
-//     try {
-//         let sql = `SELECT * FROM DSHV`;
-
-//         let [results, fields] = await connection.query(
-
-//         );
-//         res.render(results,);
-//     } catch () {
-
-//     }
-// }
 
 module.exports = {
     getHomePage, postCreatePage, postAddHocVien

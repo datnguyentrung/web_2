@@ -6,6 +6,7 @@ const connection = require('./config/database');
 const homeRoutes = require('./routes/home');
 const courseRoutes = require('./routes/course');
 const trainingRoutes = require('./routes/training');
+const coachRoutes = require('./routes/coach');
 
 const app = express(); // app express
 const port = process.env.PORT || 8888; //port => hard code
@@ -19,9 +20,11 @@ app.use(express.urlencoded({ extended: true })); //for form data
 configViewEngine(app);
 
 // Khai báo route
-app.use('/home', homeRoutes);
+app.use('/', homeRoutes);
 app.use('/course', courseRoutes);
 app.use('/training', trainingRoutes);
+app.use('/coach', coachRoutes);
+
 
 app.listen(port, () => {
     console.log(`Server is running at http://${process.env.hostname}:${port}`);

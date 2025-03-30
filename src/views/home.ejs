@@ -9,18 +9,26 @@
 
 <body>
     <div class="topnav">
-        <a class="active" href="/home">Home</a>
+        <a class="active" href="/">Home</a>
         <a href="/course">Khóa Học</a>
         <a href="/training">Lộ Trình Đào Tạo</a>
         <a href="/coach">Huấn Luyện Viên</a>
     </div>
     <div class="table-container">
         <div class="title">Danh Sach Hoc Vien</div>
-        <button><a href="/home/create">Them Hoc Vien</a></button>
+        <button><a href="/create">Them Hoc Vien</a></button>
 
         <fieldset>
             <legend>Lọc Giá Trị</legend>
-            <form action=/home method="GET">
+            <form action=/ method="GET">
+                <label>Trạng Thái: </label>
+                <select name="filter_trangthai">
+                    <% filterUsers.unq_trangthai.forEach(function(fil) { %>
+                        <option>
+                            <%=fil %>
+                        </option>
+                        <% }) %>
+                </select>
                 <label>Cơ sở: </label>
                 <select name="filter_cs">
                     <% filterUsers.unq_cs.forEach(function(fil) { %>
@@ -30,8 +38,8 @@
                         <% }) %>
                 </select>
                 <label>Cấp Đai: </label>
-                <select name="filter_capdai">
-                    <% filterUsers.unq_capdai.forEach(function(fil) { %>
+                <select name="filter_dai">
+                    <% filterUsers.unq_dai.forEach(function(fil) { %>
                         <option>
                             <%=fil %>
                         </option>
@@ -45,35 +53,71 @@
                         </option>
                         <% }) %>
                 </select>
+                <label>Phone: </label>
+                <select name="filter_phone">
+                    <% filterUsers.unq_phone.forEach(function(fil) { %>
+                        <option>
+                            <%=fil %>
+                        </option>
+                        <% }) %>
+                </select>
                 <button>Xem</button>
             </form>
         </fieldset>
 
         <table id="studentTable">
             <tr>
-                <th>ID</th>
-                <th>Họ Tên </th>
-                <th>Cơ Sở </th>
-                <th>Cấp Đai </th>
+                <th>Trạng Thái</th>
+                <th>Mã Hệ Thống</th>
+                <th>Họ Tên</th>
+                <th>Ngày Sinh</th>
+                <th>Cơ Sở</th>
+                <th>Đai</th>
+                <th>Ngày Tập</th>
                 <th>Chức Vụ</th>
-                <th>Số Điện Thoại </th>
+                <th>Vào Học</th>
+                <th>Tạm Nghỉ</th>
+                <th>Member</th>
+                <th>Mã Hội Viên</th>
+                <th>Phone</th>
             </tr>
             <% listUsers.forEach(function(user) { %>
                 <tr>
                     <td>
-                        <%= user.id %>
+                        <%= user.trangthai %>
                     </td>
                     <td>
-                        <%= user.name %>
+                        <%= user.mahethong %>
+                    </td>
+                    <td>
+                        <%= user.hoten %>
+                    </td>
+                    <td>
+                        <%= user.ngaysinh %>
                     </td>
                     <td>
                         <%= user.cs %>
                     </td>
                     <td>
-                        <%= user.capdai %>
+                        <%= user.dai %>
+                    </td>
+                    <td>
+                        <%= user.ngaytap %>
                     </td>
                     <td>
                         <%= user.chucvu %>
+                    </td>
+                    <td>
+                        <%= user.vaohoc %>
+                    </td>
+                    <td>
+                        <%= user.tamnghi %>
+                    </td>
+                    <td>
+                        <%= user.member %>
+                    </td>
+                    <td>
+                        <%= user.mahoivien %>
                     </td>
                     <td>
                         <%= user.phone %>
